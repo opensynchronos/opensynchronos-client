@@ -1,7 +1,5 @@
-# Mare Synchronos Dalamud Plugin
+# Open Synchronos Dalamud Plugin
 
-Available at [This dalamud Repo](https://raw.githubusercontent.com/MareSynchronos/repo/main/plogonmaster.json)
+Based on the last version of the original repository before it was taken down. Updated with compatibility for the latest Penumbra / Glamourer versions.
 
-# [Mare Synchronos Discord](https://discord.gg/5HVveFefcB)
-
-Readme TBD
+As some forks have decided to closed-source their versions, this is an updated open-source version to use with your sync service of choice.

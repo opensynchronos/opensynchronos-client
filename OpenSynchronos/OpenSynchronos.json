@@ -1,0 +1,11 @@
+{
+  "Author": "OpenSynchronos",
+  "Name": "OpenSynchronos",
+  "Punchline": "Let others see you as you see yourself.",
+  "Description": "This plugin will synchronize your Penumbra mods and current Glamourer state with other paired clients automatically.",
+  "InternalName": "OpenSynchronos",
+  "ApplicableVersion": "any",
+  "Tags": [
+    "customization"
+  ]
+}
