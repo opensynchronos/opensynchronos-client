@@ -44,7 +44,7 @@ public class DataAnalysisUi : WindowMediatorSubscriberBase
         PerformanceCollectorService performanceCollectorService, UiSharedService uiSharedService,
         PlayerPerformanceConfigService playerPerformanceConfig, TransientResourceManager transientResourceManager,
         TransientConfigService transientConfigService)
-        : base(logger, mediator, "Mare Character Data Analysis", performanceCollectorService)
+        : base(logger, mediator, "OpenSynchronos Character Data Analysis", performanceCollectorService)
     {
         _characterAnalyzer = characterAnalyzer;
         _ipcManager = ipcManager;
@@ -166,7 +166,7 @@ public class DataAnalysisUi : WindowMediatorSubscriberBase
         UiSharedService.DrawTree("What is this? (Explanation / Help)", () =>
         {
             UiSharedService.TextWrapped("This tab allows you to see which transient files are attached to your character.");
-            UiSharedService.TextWrapped("Transient files are files that cannot be resolved to your character permanently. Mare gathers these files in the background while you execute animations, VFX, sound effects, etc.");
+            UiSharedService.TextWrapped("Transient files are files that cannot be resolved to your character permanently. OpenSynchronos gathers these files in the background while you execute animations, VFX, sound effects, etc.");
             UiSharedService.TextWrapped("When sending your character data to others, Mare will combine the files listed in \"All Jobs\" and the corresponding currently used job.");
             UiSharedService.TextWrapped("The purpose of this tab is primarily informational for you to see which files you are carrying with you. You can remove added game paths, however if you are using the animations etc. again, "
                 + "Mare will automatically attach these after using them. If you disable associated mods in Penumbra, the associated entries here will also be deleted automatically.");

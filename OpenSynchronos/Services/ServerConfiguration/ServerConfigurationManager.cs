@@ -6,6 +6,7 @@ using OpenSynchronos.MareConfiguration;
 using OpenSynchronos.MareConfiguration.Models;
 using OpenSynchronos.Services.Mediator;
 using OpenSynchronos.WebAPI;
+using Serilog;
 using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http.Json;
@@ -532,6 +533,7 @@ public class ServerConfigurationManager
             var baseUri = serverUri.Replace("wss://", "https://").Replace("ws://", "http://");
             var oauthCheckUri = MareAuth.GetDiscordOAuthEndpointFullPath(new Uri(baseUri));
             var response = await _httpClient.GetFromJsonAsync<Uri?>(oauthCheckUri).ConfigureAwait(false);
+            _logger.LogInformation("response: {response}", response?.ToString() ?? "null");
             return response;
         }
         catch (Exception ex)
@@ -543,6 +545,8 @@ public class ServerConfigurationManager
 
     public async Task<string?> GetDiscordOAuthToken(Uri discordAuthUri, string serverUri, CancellationToken token)
     {
+        _logger.LogInformation("discordAuthUri: {uri}", discordAuthUri.ToString());
+        _logger.LogInformation("serverUri: {uri}", serverUri);
         var sessionId = BitConverter.ToString(RandomNumberGenerator.GetBytes(64)).Replace("-", "").ToLower();
         Util.OpenLink(discordAuthUri.ToString() + "?sessionId=" + sessionId);
         _logger.LogInformation("{uri}?sessionId={sessionId}", discordAuthUri.ToString(), sessionId);

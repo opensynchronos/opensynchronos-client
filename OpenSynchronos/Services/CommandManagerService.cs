@@ -36,13 +36,13 @@ public sealed class CommandManagerService : IDisposable
         _mareConfigService = mareConfigService;
         _commandManager.AddHandler(_commandName, new CommandInfo(OnCommand)
         {
-            HelpMessage = "Opens the Mare Synchronos UI" + Environment.NewLine + Environment.NewLine +
+            HelpMessage = "Opens the OpenSynchronos UI" + Environment.NewLine + Environment.NewLine +
                 "Additionally possible commands:" + Environment.NewLine +
                 "\t /sync toggle - Disconnects from Mare, if connected. Connects to Mare, if disconnected" + Environment.NewLine +
-                "\t /sync toggle on|off - Connects or disconnects to Mare respectively" + Environment.NewLine +
-                "\t /sync gpose - Opens the Mare Character Data Hub window" + Environment.NewLine +
-                "\t /sync analyze - Opens the Mare Character Data Analysis window" + Environment.NewLine +
-                "\t /sync settings - Opens the Mare Settings window"
+                "\t /sync toggle on|off - Connects or disconnects to OpenSynchronos respectively" + Environment.NewLine +
+                "\t /sync gpose - Opens the OpenSynchronos Character Data Hub window" + Environment.NewLine +
+                "\t /sync analyze - Opens the OpenSynchronos Character Data Analysis window" + Environment.NewLine +
+                "\t /sync settings - Opens the OpenSynchronos Settings window"
         });
     }
 
@@ -72,7 +72,7 @@ public sealed class CommandManagerService : IDisposable
         {
             if (_apiController.ServerState == WebAPI.SignalR.Utils.ServerState.Disconnecting)
             {
-                _mediator.Publish(new NotificationMessage("Mare disconnecting", "Cannot use /toggle while Mare Synchronos is still disconnecting",
+                _mediator.Publish(new NotificationMessage("disconnecting", "Cannot use /toggle while Open Synchronos is still disconnecting",
                     NotificationType.Error));
             }
 

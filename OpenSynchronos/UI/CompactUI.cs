@@ -89,7 +89,7 @@ public class CompactUi : WindowMediatorSubscriberBase
                 ShowTooltip = () =>
                 {
                     ImGui.BeginTooltip();
-                    ImGui.Text("Open Mare Settings");
+                    ImGui.Text("Open OpenSynchronos Settings");
                     ImGui.EndTooltip();
                 }
             },
@@ -104,7 +104,7 @@ public class CompactUi : WindowMediatorSubscriberBase
                 ShowTooltip = () =>
                 {
                     ImGui.BeginTooltip();
-                    ImGui.Text("Open Mare Event Viewer");
+                    ImGui.Text("Open OpenSynchronos Event Viewer");
                     ImGui.EndTooltip();
                 }
             }
