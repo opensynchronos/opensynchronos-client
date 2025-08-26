@@ -21,8 +21,8 @@ namespace OpenSynchronos.WebAPI;
 #pragma warning disable MA0040
 public sealed partial class ApiController : DisposableMediatorSubscriberBase, IMareHubClient
 {
-    public const string MainServer = "Localhost";
-    public const string MainServiceUri = "ws://localhost:80";
+    public const string MainServer = "PXIV";
+    public const string MainServiceUri = "wss://pxiv.club";
 
     private readonly DalamudUtilService _dalamudUtil;
     private readonly HubFactory _hubFactory;
