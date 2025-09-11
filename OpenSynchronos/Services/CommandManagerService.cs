@@ -13,7 +13,7 @@ namespace OpenSynchronos.Services;
 
 public sealed class CommandManagerService : IDisposable
 {
-    private const string _commandName = "/sync";
+    private const string _commandName = "/os";
 
     private readonly ApiController _apiController;
     private readonly ICommandManager _commandManager;
@@ -38,11 +38,11 @@ public sealed class CommandManagerService : IDisposable
         {
             HelpMessage = "Opens the OpenSynchronos UI" + Environment.NewLine + Environment.NewLine +
                 "Additionally possible commands:" + Environment.NewLine +
-                "\t /sync toggle - Disconnects from Mare, if connected. Connects to Mare, if disconnected" + Environment.NewLine +
-                "\t /sync toggle on|off - Connects or disconnects to OpenSynchronos respectively" + Environment.NewLine +
-                "\t /sync gpose - Opens the OpenSynchronos Character Data Hub window" + Environment.NewLine +
-                "\t /sync analyze - Opens the OpenSynchronos Character Data Analysis window" + Environment.NewLine +
-                "\t /sync settings - Opens the OpenSynchronos Settings window"
+                "\t /os toggle - Disconnects from Mare, if connected. Connects to Mare, if disconnected" + Environment.NewLine +
+                "\t /os toggle on|off - Connects or disconnects to OpenSynchronos respectively" + Environment.NewLine +
+                "\t /os gpose - Opens the OpenSynchronos Character Data Hub window" + Environment.NewLine +
+                "\t /os analyze - Opens the OpenSynchronos Character Data Analysis window" + Environment.NewLine +
+                "\t /os settings - Opens the OpenSynchronos Settings window"
         });
     }
 
