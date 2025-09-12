@@ -1,4 +1,4 @@
-﻿using Dalamud.Game.ClientState.Objects.SubKinds;
+using Dalamud.Game.ClientState.Objects.SubKinds;
 using K4os.Compression.LZ4.Legacy;
 using Microsoft.Extensions.Logging;
 using OpenSynchronos.API.Data;
@@ -141,7 +141,7 @@ public sealed class CharaDataFileHandler : IDisposable
             using var reader = new BinaryReader(lz4Stream);
             var loadedCharaFile = MareCharaFileHeader.FromBinaryReader(filePath, reader);
 
-            _logger.LogInformation("Read Mare Chara File");
+            _logger.LogInformation("Read Character Data File");
             _logger.LogInformation("Version: {ver}", (loadedCharaFile?.Version ?? -1));
             long expectedLength = 0;
             if (loadedCharaFile != null)
@@ -291,7 +291,7 @@ public sealed class CharaDataFileHandler : IDisposable
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Failure Saving Mare Chara File, deleting output");
+            _logger.LogError(ex, "Failure Saving Character Data File, deleting output");
             File.Delete(tempFilePath);
         }
     }
@@ -301,3 +301,4 @@ public sealed class CharaDataFileHandler : IDisposable
         return await _fileUploadManager.UploadFiles(fileList, uploadProgress, token).ConfigureAwait(false);
     }
 }
+

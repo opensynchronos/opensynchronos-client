@@ -1,4 +1,4 @@
-﻿using OpenSynchronos.Utils;
+using OpenSynchronos.Utils;
 using Microsoft.Extensions.Logging;
 using OpenSynchronos.Interop.Ipc;
 using OpenSynchronos.MareConfiguration;
@@ -121,7 +121,7 @@ public sealed class CacheMonitor : DisposableMediatorSubscriberBase
         if (string.IsNullOrEmpty(marePath) || !Directory.Exists(marePath))
         {
             MareWatcher = null;
-            Logger.LogWarning("OpenSynchronos file path is not set, cannot start the FSW for Mare.");
+            Logger.LogWarning("OpenSynchronos file path is not set, cannot start the FSW for OpenSynchronos.");
             return;
         }
 

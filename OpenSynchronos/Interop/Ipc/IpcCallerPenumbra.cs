@@ -1,4 +1,4 @@
-﻿using Dalamud.Plugin;
+using Dalamud.Plugin;
 using Microsoft.Extensions.Logging;
 using OpenSynchronos.MareConfiguration.Models;
 using OpenSynchronos.PlayerData.Handlers;
@@ -126,7 +126,7 @@ public sealed class IpcCallerPenumbra : DisposableMediatorSubscriberBase, IIpcCa
             {
                 _shownPenumbraUnavailable = true;
                 _mareMediator.Publish(new NotificationMessage("Penumbra inactive",
-                    "Your Penumbra installation is not active or out of date. Update Penumbra and/or the Enable Mods setting in Penumbra to continue to use Mare. If you just updated Penumbra, ignore this message.",
+                    "Your Penumbra installation is not active or out of date. Update Penumbra and/or the Enable Mods setting in Penumbra to continue to use OpenSynchronos. If you just updated Penumbra, ignore this message.",
                     NotificationType.Error));
             }
         }
