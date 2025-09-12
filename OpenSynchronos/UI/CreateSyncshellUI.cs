@@ -1,4 +1,4 @@
-﻿using Dalamud.Bindings.ImGui;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface;
 using Dalamud.Interface.Utility;
 using OpenSynchronos.API.Data.Extensions;
@@ -20,7 +20,7 @@ public class CreateSyncshellUI : WindowMediatorSubscriberBase
 
     public CreateSyncshellUI(ILogger<CreateSyncshellUI> logger, MareMediator mareMediator, ApiController apiController, UiSharedService uiSharedService,
         PerformanceCollectorService performanceCollectorService)
-        : base(logger, mareMediator, "Create new Syncshell###MareSynchronosCreateSyncshell", performanceCollectorService)
+        : base(logger, mareMediator, "Create new Syncshell###OpenSynchronosCreateSyncshell", performanceCollectorService)
     {
         _apiController = apiController;
         _uiSharedService = uiSharedService;

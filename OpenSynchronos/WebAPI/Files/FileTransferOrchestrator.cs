@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using OpenSynchronos.MareConfiguration;
 using OpenSynchronos.Services.Mediator;
 using OpenSynchronos.WebAPI.Files.Models;
@@ -28,7 +28,7 @@ public class FileTransferOrchestrator : DisposableMediatorSubscriberBase
         _tokenProvider = tokenProvider;
         _httpClient = httpClient;
         var ver = Assembly.GetExecutingAssembly().GetName().Version;
-        _httpClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("MareSynchronos", ver!.Major + "." + ver!.Minor + "." + ver!.Build));
+        _httpClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("OpenSynchronos", ver!.Major + "." + ver!.Minor + "." + ver!.Build));
 
         _availableDownloadSlots = mareConfig.Current.ParallelDownloads;
         _downloadSemaphore = new(_availableDownloadSlots, _availableDownloadSlots);

@@ -1,4 +1,4 @@
-﻿using Dalamud.Bindings.ImGui;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
@@ -21,7 +21,7 @@ public partial class IntroUi : WindowMediatorSubscriberBase
 {
     private readonly MareConfigService _configService;
     private readonly CacheMonitor _cacheMonitor;
-    private readonly Dictionary<string, string> _languages = new(StringComparer.Ordinal) { { "English", "en" }, { "Deutsch", "de" }, { "Français", "fr" } };
+    private readonly Dictionary<string, string> _languages = new(StringComparer.Ordinal) { { "English", "en" }, { "Deutsch", "de" }, { "Francais", "fr" } };
     private readonly ServerConfigurationManager _serverConfigurationManager;
     private readonly DalamudUtilService _dalamudUtilService;
     private readonly UiSharedService _uiShared;
@@ -73,7 +73,7 @@ public partial class IntroUi : WindowMediatorSubscriberBase
         {
             _uiShared.BigText("Welcome to OpenSynchronos");
             ImGui.Separator();
-            UiSharedService.TextWrapped("OpenSynchronos is a plugin that will replicate your full current character state including all Penumbra mods to other paired Mare Synchronos users. " +
+            UiSharedService.TextWrapped("OpenSynchronos is a plugin that will replicate your full current character state including all Penumbra mods to other paired OpenSynchronos users. " +
                               "Note that you will have to have Penumbra as well as Glamourer installed to use this plugin.");
             UiSharedService.TextWrapped("We will have to setup a few things first before you can start using this plugin. Click on next to continue.");
 
@@ -168,11 +168,11 @@ public partial class IntroUi : WindowMediatorSubscriberBase
             }
             else
             {
-                UiSharedService.TextWrapped("To not unnecessary download files already present on your computer, Mare Synchronos will have to scan your Penumbra mod directory. " +
+                UiSharedService.TextWrapped("To not unnecessary download files already present on your computer, OpenSynchronos will have to scan your Penumbra mod directory. " +
                                      "Additionally, a local storage folder must be set where Synchronos will download other character files to. " +
                                      "Once the storage folder is set and the scan complete, this page will automatically forward to registration at a service.");
                 UiSharedService.TextWrapped("Note: The initial scan, depending on the amount of mods you have, might take a while. Please wait until it is completed.");
-                UiSharedService.ColorTextWrapped("Warning: once past this step you should not delete the FileCache.csv of Mare Synchronos in the Plugin Configurations folder of Dalamud. " +
+                UiSharedService.ColorTextWrapped("Warning: once past this step you should not delete the FileCache.csv of OpenSynchronos in the Plugin Configurations folder of Dalamud. " +
                                           "Otherwise on the next launch a full re-scan of the file cache database will be initiated.", ImGuiColors.DalamudYellow);
                 UiSharedService.ColorTextWrapped("Warning: if the scan is hanging and does nothing for a long time, chances are high your Penumbra folder is not set up properly.", ImGuiColors.DalamudYellow);
                 _uiShared.DrawCacheDirectorySetting();
@@ -197,8 +197,8 @@ public partial class IntroUi : WindowMediatorSubscriberBase
                     _configService.Current.UseCompactor = useFileCompactor;
                     _configService.Save();
                 }
-                UiSharedService.ColorTextWrapped("The File Compactor can save a tremendeous amount of space on the hard disk for downloads through Mare. It will incur a minor CPU penalty on download but can speed up " +
-                    "loading of other characters. It is recommended to keep it enabled. You can change this setting later anytime in the Mare settings.", ImGuiColors.DalamudYellow);
+                UiSharedService.ColorTextWrapped("The File Compactor can save a tremendeous amount of space on the hard disk for downloads through OpenSynchronos. It will incur a minor CPU penalty on download but can speed up " +
+                    "loading of other characters. It is recommended to keep it enabled. You can change this setting later anytime in the OpenSynchronos settings.", ImGuiColors.DalamudYellow);
             }
         }
         else if (!_uiShared.ApiController.ServerAlive)
@@ -349,3 +349,4 @@ public partial class IntroUi : WindowMediatorSubscriberBase
     [GeneratedRegex("^([A-F0-9]{2})+")]
     private static partial Regex HexRegex();
 }
+

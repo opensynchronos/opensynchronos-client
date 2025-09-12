@@ -1,4 +1,4 @@
-﻿using Dalamud.Game.Command;
+using Dalamud.Game.Command;
 using Dalamud.Plugin.Services;
 using OpenSynchronos.FileCache;
 using OpenSynchronos.MareConfiguration;
@@ -38,7 +38,7 @@ public sealed class CommandManagerService : IDisposable
         {
             HelpMessage = "Opens the OpenSynchronos UI" + Environment.NewLine + Environment.NewLine +
                 "Additionally possible commands:" + Environment.NewLine +
-                "\t /os toggle - Disconnects from Mare, if connected. Connects to Mare, if disconnected" + Environment.NewLine +
+                "\t /os toggle - Disconnects from OpenSynchronos, if connected. Connects to OpenSynchronos, if disconnected" + Environment.NewLine +
                 "\t /os toggle on|off - Connects or disconnects to OpenSynchronos respectively" + Environment.NewLine +
                 "\t /os gpose - Opens the OpenSynchronos Character Data Hub window" + Environment.NewLine +
                 "\t /os analyze - Opens the OpenSynchronos Character Data Analysis window" + Environment.NewLine +

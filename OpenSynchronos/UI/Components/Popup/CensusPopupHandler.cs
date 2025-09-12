@@ -1,4 +1,4 @@
-﻿using Dalamud.Bindings.ImGui;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Utility;
 using OpenSynchronos.Services.ServerConfiguration;
 using System.Numerics;
@@ -41,7 +41,7 @@ public class CensusPopupHandler : IPopupHandler
             + "- Current Race (reflecting Glamourer changes)" + Environment.NewLine
             + "- Current Clan (i.e. Seeker of the Sun, Keeper of the Moon, etc., reflecting Glamourer changes)");
         UiSharedService.TextWrapped("To consent to collecting census data press the appropriate button below.");
-        UiSharedService.TextWrapped("This setting can be changed anytime in the Mare Settings.");
+        UiSharedService.TextWrapped("This setting can be changed anytime in the OpenSynchronos Settings.");
         var width = ImGui.GetWindowContentRegionMax().X - ImGui.GetWindowContentRegionMin().X;
         var buttonSize = ImGuiHelpers.GetButtonSize("I consent to send my census data");
         ImGuiHelpers.ScaledDummy(5f);
@@ -62,3 +62,4 @@ public class CensusPopupHandler : IPopupHandler
         _size = _size with { Y = height };
     }
 }
+

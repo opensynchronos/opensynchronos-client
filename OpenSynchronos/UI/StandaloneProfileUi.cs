@@ -1,4 +1,4 @@
-﻿using Dalamud.Bindings.ImGui;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Colors;
 using Dalamud.Interface.Textures.TextureWraps;
 using Dalamud.Interface.Utility;
@@ -27,7 +27,7 @@ public class StandaloneProfileUi : WindowMediatorSubscriberBase
     public StandaloneProfileUi(ILogger<StandaloneProfileUi> logger, MareMediator mediator, UiSharedService uiBuilder,
         ServerConfigurationManager serverManager, MareProfileManager mareProfileManager, PairManager pairManager, Pair pair,
         PerformanceCollectorService performanceCollector)
-        : base(logger, mediator, "OpenSynchronos Profile of " + pair.UserData.AliasOrUID + "##MareSynchronosStandaloneProfileUI" + pair.UserData.AliasOrUID, performanceCollector)
+        : base(logger, mediator, "OpenSynchronos Profile of " + pair.UserData.AliasOrUID + "##OpenSynchronosStandaloneProfileUI" + pair.UserData.AliasOrUID, performanceCollector)
     {
         _uiSharedService = uiBuilder;
         _serverManager = serverManager;

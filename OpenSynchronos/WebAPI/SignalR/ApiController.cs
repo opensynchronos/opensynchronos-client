@@ -19,7 +19,7 @@ using System.Reflection;
 namespace OpenSynchronos.WebAPI;
 
 #pragma warning disable MA0040
-public sealed partial class ApiController : DisposableMediatorSubscriberBase, IMareHubClient
+public sealed partial class ApiController : DisposableMediatorSubscriberBase, IOpenSynchronosHubClient
 {
     public const string MainServer = "Localhost";
     public const string MainServiceUri = "ws://localhost:80";
@@ -134,7 +134,7 @@ public sealed partial class ApiController : DisposableMediatorSubscriberBase, IM
             {
                 Logger.LogWarning("Multiple secret keys for current character");
                 _connectionDto = null;
-                Mediator.Publish(new NotificationMessage("Multiple Identical Characters detected", "Your Service configuration has multiple characters with the same name and world set up. Delete the duplicates in the character management to be able to connect to Mare.",
+                Mediator.Publish(new NotificationMessage("Multiple Identical Characters detected", "Your Service configuration has multiple characters with the same name and world set up. Delete the duplicates in the character management to be able to connect to OpenSynchronos.",
                     NotificationType.Error));
                 await StopConnectionAsync(ServerState.MultiChara).ConfigureAwait(false);
                 _connectionCancellationTokenSource?.Cancel();
@@ -157,7 +157,7 @@ public sealed partial class ApiController : DisposableMediatorSubscriberBase, IM
             {
                 Logger.LogWarning("Multiple secret keys for current character");
                 _connectionDto = null;
-                Mediator.Publish(new NotificationMessage("Multiple Identical Characters detected", "Your Service configuration has multiple characters with the same name and world set up. Delete the duplicates in the character management to be able to connect to Mare.",
+                Mediator.Publish(new NotificationMessage("Multiple Identical Characters detected", "Your Service configuration has multiple characters with the same name and world set up. Delete the duplicates in the character management to be able to connect to OpenSynchronos.",
                     NotificationType.Error));
                 await StopConnectionAsync(ServerState.MultiChara).ConfigureAwait(false);
                 _connectionCancellationTokenSource?.Cancel();
@@ -233,7 +233,7 @@ public sealed partial class ApiController : DisposableMediatorSubscriberBase, IM
 
                 var currentClientVer = Assembly.GetExecutingAssembly().GetName().Version!;
 
-                if (_connectionDto.ServerVersion != IMareHub.ApiVersion)
+                if (_connectionDto.ServerVersion != IOpenSynchronosHub.ApiVersion)
                 {
                     if (_connectionDto.CurrentClientVersion > currentClientVer)
                     {
@@ -276,7 +276,7 @@ public sealed partial class ApiController : DisposableMediatorSubscriberBase, IM
                     {
                         Mediator.Publish(new NotificationMessage("Model LOD is enabled",
                             "You have \"Use low-detail models on distant objects (LOD)\" enabled. Having model LOD enabled is known to be a reason to cause " +
-                            "random crashes when loading in or rendering modded pairs. Disabling LOD has a very low performance impact. Disable LOD while using Mare: " +
+                            "random crashes when loading in or rendering modded pairs. Disabling LOD has a very low performance impact. Disable LOD while using OpenSynchronos: " +
                             "Go to XIV Menu -> System Configuration -> Graphics Settings and disable the model LOD option.", NotificationType.Warning, TimeSpan.FromSeconds(15)));
                     }
                 }
@@ -511,7 +511,7 @@ public sealed partial class ApiController : DisposableMediatorSubscriberBase, IM
         {
             InitializeApiHooks();
             _connectionDto = await GetConnectionDtoAsync(publishConnected: false).ConfigureAwait(false);
-            if (_connectionDto.ServerVersion != IMareHub.ApiVersion)
+            if (_connectionDto.ServerVersion != IOpenSynchronosHub.ApiVersion)
             {
                 await StopConnectionAsync(ServerState.VersionMisMatch).ConfigureAwait(false);
                 return;
@@ -594,3 +594,4 @@ public sealed partial class ApiController : DisposableMediatorSubscriberBase, IM
     }
 }
 #pragma warning restore MA0040
+

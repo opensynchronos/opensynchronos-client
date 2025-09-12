@@ -17,6 +17,10 @@ public class IpcProvider : IHostedService, IMediatorSubscriber
     private ICallGateProvider<string, IGameObject, bool>? _loadFileProvider;
     private ICallGateProvider<string, IGameObject, Task<bool>>? _loadFileAsyncProvider;
     private ICallGateProvider<List<nint>>? _handledGameAddresses;
+    // New IPC labels under OpenSynchronos for rebrand, keep both for compatibility
+    private ICallGateProvider<string, IGameObject, bool>? _loadFileProviderOs;
+    private ICallGateProvider<string, IGameObject, Task<bool>>? _loadFileAsyncProviderOs;
+    private ICallGateProvider<List<nint>>? _handledGameAddressesOs;
     private readonly List<GameObjectHandler> _activeGameObjectHandlers = [];
 
     public MareMediator Mediator { get; init; }
@@ -50,6 +54,14 @@ public class IpcProvider : IHostedService, IMediatorSubscriber
         _loadFileAsyncProvider.RegisterFunc(LoadMcdfAsync);
         _handledGameAddresses = _pi.GetIpcProvider<List<nint>>("MareSynchronos.GetHandledAddresses");
         _handledGameAddresses.RegisterFunc(GetHandledAddresses);
+
+        // Register new OpenSynchronos IPC endpoints
+        _loadFileProviderOs = _pi.GetIpcProvider<string, IGameObject, bool>("OpenSynchronos.LoadMcdf");
+        _loadFileProviderOs.RegisterFunc(LoadMcdf);
+        _loadFileAsyncProviderOs = _pi.GetIpcProvider<string, IGameObject, Task<bool>>("OpenSynchronos.LoadMcdfAsync");
+        _loadFileAsyncProviderOs.RegisterFunc(LoadMcdfAsync);
+        _handledGameAddressesOs = _pi.GetIpcProvider<List<nint>>("OpenSynchronos.GetHandledAddresses");
+        _handledGameAddressesOs.RegisterFunc(GetHandledAddresses);
         _logger.LogInformation("Started IpcProviderService");
         return Task.CompletedTask;
     }
@@ -60,6 +72,9 @@ public class IpcProvider : IHostedService, IMediatorSubscriber
         _loadFileProvider?.UnregisterFunc();
         _loadFileAsyncProvider?.UnregisterFunc();
         _handledGameAddresses?.UnregisterFunc();
+        _loadFileProviderOs?.UnregisterFunc();
+        _loadFileAsyncProviderOs?.UnregisterFunc();
+        _handledGameAddressesOs?.UnregisterFunc();
         Mediator.UnsubscribeAll(this);
         return Task.CompletedTask;
     }

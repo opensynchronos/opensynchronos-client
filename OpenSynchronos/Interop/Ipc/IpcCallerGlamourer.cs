@@ -1,4 +1,4 @@
-﻿using Dalamud.Game.ClientState.Objects.Types;
+using Dalamud.Game.ClientState.Objects.Types;
 using Dalamud.Plugin;
 using Glamourer.Api.Helpers;
 using Glamourer.Api.IpcSubscribers;
@@ -97,7 +97,7 @@ public sealed class IpcCallerGlamourer : DisposableMediatorSubscriberBase, IIpcC
             if (!apiAvailable && !_shownGlamourerUnavailable)
             {
                 _shownGlamourerUnavailable = true;
-                _mareMediator.Publish(new NotificationMessage("Glamourer inactive", "Your Glamourer installation is not active or out of date. Update Glamourer to continue to use Mare. If you just updated Glamourer, ignore this message.",
+                _mareMediator.Publish(new NotificationMessage("Glamourer inactive", "Your Glamourer installation is not active or out of date. Update Glamourer to continue to use OpenSynchronos. If you just updated Glamourer, ignore this message.",
                     NotificationType.Error));
             }
         }
