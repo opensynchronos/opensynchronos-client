@@ -63,7 +63,7 @@ public sealed class TokenProvider : IDisposable, IMediatorSubscriber
 
                 if (!_serverManager.CurrentServer.UseOAuth2)
                 {
-                    tokenUri = MareAuth.AuthFullPath(new Uri(_serverManager.CurrentApiUrl
+                    tokenUri = OpenSynchronosAuth.AuthFullPath(new Uri(_serverManager.CurrentApiUrl
                         .Replace("wss://", "https://", StringComparison.OrdinalIgnoreCase)
                         .Replace("ws://", "http://", StringComparison.OrdinalIgnoreCase)));
                     _logger.LogInformation("tokenUri {tokenUri}", tokenUri.ToString());
@@ -78,7 +78,7 @@ public sealed class TokenProvider : IDisposable, IMediatorSubscriber
                 }
                 else
                 {
-                    tokenUri = MareAuth.AuthWithOauthFullPath(new Uri(_serverManager.CurrentApiUrl
+                    tokenUri = OpenSynchronosAuth.AuthWithOauthFullPath(new Uri(_serverManager.CurrentApiUrl
                         .Replace("wss://", "https://", StringComparison.OrdinalIgnoreCase)
                         .Replace("ws://", "http://", StringComparison.OrdinalIgnoreCase)));
                     HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, tokenUri.ToString());
@@ -95,7 +95,7 @@ public sealed class TokenProvider : IDisposable, IMediatorSubscriber
             {
                 _logger.LogDebug("GetNewToken: Renewal");
 
-                tokenUri = MareAuth.RenewTokenFullPath(new Uri(_serverManager.CurrentApiUrl
+                tokenUri = OpenSynchronosAuth.RenewTokenFullPath(new Uri(_serverManager.CurrentApiUrl
                     .Replace("wss://", "https://", StringComparison.OrdinalIgnoreCase)
                     .Replace("ws://", "http://", StringComparison.OrdinalIgnoreCase)));
                 HttpRequestMessage request = new(HttpMethod.Get, tokenUri.ToString());
@@ -254,7 +254,7 @@ public sealed class TokenProvider : IDisposable, IMediatorSubscriber
                 return false;
         }
 
-        var tokenUri = MareAuth.RenewOAuthTokenFullPath(new Uri(currentServer.ServerUri
+        var tokenUri = OpenSynchronosAuth.RenewOAuthTokenFullPath(new Uri(currentServer.ServerUri
             .Replace("wss://", "https://", StringComparison.OrdinalIgnoreCase)
             .Replace("ws://", "http://", StringComparison.OrdinalIgnoreCase)));
         HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, tokenUri.ToString());

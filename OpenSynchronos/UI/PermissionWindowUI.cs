@@ -1,4 +1,4 @@
-﻿using Dalamud.Bindings.ImGui;
+using Dalamud.Bindings.ImGui;
 using Dalamud.Interface.Utility;
 using Dalamud.Interface.Utility.Raii;
 using OpenSynchronos.API.Data.Extensions;
@@ -22,7 +22,7 @@ public class PermissionWindowUI : WindowMediatorSubscriberBase
 
     public PermissionWindowUI(ILogger<PermissionWindowUI> logger, Pair pair, MareMediator mediator, UiSharedService uiSharedService,
         ApiController apiController, PerformanceCollectorService performanceCollectorService)
-        : base(logger, mediator, "Permissions for " + pair.UserData.AliasOrUID + "###MareSynchronosPermissions" + pair.UserData.UID, performanceCollectorService)
+        : base(logger, mediator, "Permissions for " + pair.UserData.AliasOrUID + "###OpenSynchronosPermissions" + pair.UserData.UID, performanceCollectorService)
     {
         Pair = pair;
         _uiSharedService = uiSharedService;
@@ -175,7 +175,7 @@ public class PermissionWindowUI : WindowMediatorSubscriberBase
                 new(StringComparer.Ordinal)
             ));
         }
-        UiSharedService.AttachToolTip("This will set all permissions to your defined default permissions in the Mare Settings");
+        UiSharedService.AttachToolTip("This will set all permissions to your defined default permissions in the OpenSynchronos Settings");
 
         var ySize = ImGui.GetCursorPosY() + style.FramePadding.Y * ImGuiHelpers.GlobalScale + style.FrameBorderSize;
         ImGui.SetWindowSize(new(400, ySize));
@@ -186,3 +186,4 @@ public class PermissionWindowUI : WindowMediatorSubscriberBase
         Mediator.Publish(new RemoveWindowMessage(this));
     }
 }
+

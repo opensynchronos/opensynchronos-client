@@ -1,4 +1,4 @@
-﻿namespace OpenSynchronos.Services.CharaData.Models;
+namespace OpenSynchronos.Services.CharaData.Models;
 
 public record MareCharaFileHeader(byte Version, MareCharaFileData CharaFileData)
 {
@@ -23,7 +23,7 @@ public record MareCharaFileHeader(byte Version, MareCharaFileData CharaFileData)
     public static MareCharaFileHeader? FromBinaryReader(string path, BinaryReader reader)
     {
         var chars = new string(reader.ReadChars(4));
-        if (!string.Equals(chars, "MCDF", StringComparison.Ordinal)) throw new InvalidDataException("Not a Mare Chara File");
+        if (!string.Equals(chars, "MCDF", StringComparison.Ordinal)) throw new InvalidDataException("Not a Character Data File");
 
         MareCharaFileHeader? decoded = null;
 

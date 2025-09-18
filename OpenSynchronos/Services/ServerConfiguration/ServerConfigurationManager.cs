@@ -513,7 +513,7 @@ public class ServerConfigurationManager
         try
         {
             var baseUri = serverUri.Replace("wss://", "https://").Replace("ws://", "http://");
-            var oauthCheckUri = MareAuth.GetUIDsFullPath(new Uri(baseUri));
+            var oauthCheckUri = OpenSynchronosAuth.GetUIDsFullPath(new Uri(baseUri));
             _httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
             var response = await _httpClient.GetAsync(oauthCheckUri).ConfigureAwait(false);
             var responseStream = await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
@@ -531,7 +531,7 @@ public class ServerConfigurationManager
         try
         {
             var baseUri = serverUri.Replace("wss://", "https://").Replace("ws://", "http://");
-            var oauthCheckUri = MareAuth.GetDiscordOAuthEndpointFullPath(new Uri(baseUri));
+            var oauthCheckUri = OpenSynchronosAuth.GetDiscordOAuthEndpointFullPath(new Uri(baseUri));
             var response = await _httpClient.GetFromJsonAsync<Uri?>(oauthCheckUri).ConfigureAwait(false);
             _logger.LogInformation("response: {response}", response?.ToString() ?? "null");
             return response;
@@ -557,7 +557,7 @@ public class ServerConfigurationManager
         try
         {
             var baseUri = serverUri.Replace("wss://", "https://").Replace("ws://", "http://");
-            var oauthCheckUri = MareAuth.GetDiscordOAuthTokenFullPath(new Uri(baseUri), sessionId);
+            var oauthCheckUri = OpenSynchronosAuth.GetDiscordOAuthTokenFullPath(new Uri(baseUri), sessionId);
             var response = await _httpClient.GetAsync(oauthCheckUri, linkedCts.Token).ConfigureAwait(false);
             discordToken = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
